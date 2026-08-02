@@ -1,0 +1,31 @@
+{
+  "name": "to-do",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:backend":"cd backend && pnpm dev",
+    "dev:frontend":"cd frontend && pnpm dev",
+    "dev": "concurrently \"pnpm dev:backend\" \"pnpm dev:frontend\"",
+    "build:backend":"cd backend && pnpm build",
+    "build:frontend":"cd frontend && pnpm build",
+    "build": "concurrently \"pnpm build:backend\" \"pnpm build:frontend\"",
+    "start:backend":"cd backend && pnpm start",
+    "start:frontend":"cd frontend && pnpm preview",
+    "start":"concurrently \"pnpm start:backend\" \"pnpm start:frontend\" "
+  },
+  "keywords": [],
+  "author": "Rafael Rocha",
+  "license": "MIT",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.17.0",
+      "onFail": "download"
+    }
+  },
+  "type": "module",
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  }
+}
