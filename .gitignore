@@ -1,7 +1,14 @@
 
-node_modules/
-dist/
+**/node_modules/
 
-.env
+frontend/.env
+frontend/dist/
 
-/src/generated/prisma
+backend/dist/
+backend/.env
+
+**/src/generated/prisma
+
+*.log
+pnpm-debug.log
+
