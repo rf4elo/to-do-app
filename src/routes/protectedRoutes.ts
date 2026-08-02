@@ -3,12 +3,18 @@ import { Router, Request, Response } from "express";
 import { ValidateProtectedRoutes } from "../middlewares/protect-middleware.ts";
 import * as taskService from "../services/taskService.ts";
 
+import { decodeJwt } from "jose";
+
 
 const ProtectedRoutes: Router = Router();
 
+ProtectedRoutes.get("/", ValidateProtectedRoutes, async (req: Request, res: Response) => {
+    const token = req.cookies.authToken;
+    const decodedToken = await decodeJwt(token);
 
-ProtectedRoutes.get("/", ValidateProtectedRoutes, (req: Request, res: Response) => {
-    return res.status(200).json({ "message": "Hello, world!" });
+    const tasks = await taskService.GetTasks(Number(decodedToken.id));
+
+    return res.status(200).json({ "message": "Hello, world!", "tasks":tasks });
 });
 
 ProtectedRoutes.post("/", ValidateProtectedRoutes, async (req: Request, res: Response) => {

@@ -1,21 +1,18 @@
-import { UserDTO } from "../models/userModel.ts";
+import { PrismaClient } from "../generated/prisma/client.ts";
+import { PrismaPg } from "@prisma/adapter-pg";
+
+import { config } from "dotenv";
+config();
+
+const db_key = await process.env.DATABASE_URL;
+if(!db_key) throw new Error("DATABASE_URL is missing on env file.");
 
 
-export interface UserDB {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-}
+const adapter = new PrismaPg({ connectionString: db_key });
 
-export interface TasksDB {
-    id: number;
-    userId: number;
-    title: string;
-    isCompleted: boolean;
-}
 
-export const users_db: UserDB[] = [];
+export const prisma = new PrismaClient({
+    adapter: adapter
+});
 
-export const tasks_db: TasksDB[] = [];
 
