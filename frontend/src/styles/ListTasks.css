@@ -20,6 +20,7 @@
     & .tasks-field {
         background-color: var(--secondary-color);
         
+        padding: 4px 0;
         margin: 12px 0;
 
         border-radius: 12px;
@@ -27,13 +28,17 @@
         min-height: 100px;
 
         & .item {
-            background-color: var(--assent-color);
+            background-color: var(--primary-color);
+            border-bottom: 2px solid var(--assent-color);
+            border-radius: 4px;
+
+            color: var(--assent-color);
 
             font-weight: bold;
 
             width: 90%;
 
-            margin: 0 auto;
+            margin: 8px auto;
 
             display: flex;
             justify-content: space-between;
@@ -46,8 +51,8 @@
             & > button {
                 display: block;
 
-                background-color: #faa;
-                color: #f00;
+                background-color: #9bf;
+                color: var(--assent-color);
 
                 border: none;
                 outline: none;

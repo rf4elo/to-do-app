@@ -15,6 +15,11 @@ export function ListTasks() {
                     <button>Delete</button>
                 </div>
 
+                <div className="item">
+                    <span>Test task 2</span>
+                    <button>Delete</button>
+                </div>
+
             </div>
 
         </div>
