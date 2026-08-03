@@ -1,0 +1,26 @@
+
+
+.app-content {
+    width: 90%;
+    margin: 0 auto;
+    /* padding: 16px; */
+    border-radius: 16px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "add-task list-tasks list-tasks";
+    gap: 12px;
+}
+
+@media (width < 1000px) {
+    .app-content {
+        grid-template-columns: 1fr;
+        grid-template-areas: "add-task" "list-tasks";
+        gap: 12px;
+
+        & > div {
+            width: 80%;
+            margin: 0 auto;
+        };
+    }
+}

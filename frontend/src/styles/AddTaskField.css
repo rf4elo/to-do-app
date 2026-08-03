@@ -1,0 +1,57 @@
+@import url('./variables.css');
+
+
+.add-task-field {
+    grid-area: add-task;
+
+    background-color: #222;
+    box-shadow: 0px 0px 5px #000000aa;
+
+    border-radius: 16px;
+    padding: 16px 30px;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    & h1 {
+        color: var(--assent-color);
+        text-align: center;
+    };
+
+    & input {
+        background-color: var(--secondary-color);
+        color: #fff;
+
+        border-radius: 12px;
+
+        border: 2px solid transparent;
+        outline: none;
+        padding: 12px;
+
+        margin: 8px 0;
+
+        width: 100%;
+
+        transition: all 0.2s ease-in-out;
+
+        &:focus,
+        &:not(:placeholder-shown) {
+            border-color: var(--assent-color);
+        };
+
+        &[type="submit"] {
+            background-color: var(--assent-color);
+            color: #fff;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            &:hover {
+                filter: brightness(0.9);
+            };
+            &:active {
+                filter: brightness(0.7);
+            };
+        };
+    };
+}

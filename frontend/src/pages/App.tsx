@@ -1,11 +1,23 @@
 import '../styles/App.css';
 
+import { Header } from '../components/Header';
+import { AddTaskField } from '../components/AddTaskField';
+import { ListTasks } from '../components/ListTasks';
+
 
 export function App() {
 
   return (
     <>
-      <h1>MAIN PAGE</h1>
+      <Header />
+
+      <div className='app-content' >
+
+        <AddTaskField />
+
+        <ListTasks />
+
+      </div>
     </>
   )
 }
