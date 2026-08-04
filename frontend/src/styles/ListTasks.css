@@ -43,7 +43,7 @@
             display: flex;
             justify-content: space-between;
 
-            padding: 0 30px;
+            padding: 8px 30px;
 
             & > span {
                 display: block;
@@ -51,12 +51,14 @@
             & > button {
                 display: block;
 
-                background-color: #9bf;
+                background-color: #27f4;
                 color: var(--assent-color);
+                font-weight: bold;
 
-                border: none;
                 outline: none;
-
+                border: 1px solid var(--assent-color);
+                border-radius: 8px;
+                
                 padding: 4px 8px;
                 
                 cursor: pointer;

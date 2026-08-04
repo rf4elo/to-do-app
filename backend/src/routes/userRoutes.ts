@@ -6,10 +6,8 @@ import { ValidateAPIRoutes } from "../middlewares/api-validate.ts";
 
 const UserRoutes: Router = Router();
 
-UserRoutes.use(ValidateAPIRoutes);
-
-UserRoutes.post("/login", userController.LoginUser );
-UserRoutes.post("/register", userController.RegisterUser );
+UserRoutes.post("/login", ValidateAPIRoutes, userController.LoginUser );
+UserRoutes.post("/register", ValidateAPIRoutes, userController.RegisterUser );
 
 
 export default UserRoutes;

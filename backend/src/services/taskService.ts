@@ -39,10 +39,10 @@ export async function CreateTask(token:string, title:string) {
             isComplete: task.isCompleted
         },
         select: {
-            id: false,
+            id: true,
             userId: true,
             title: true,
-            isComplete: false
+            isComplete: true
         }
     });
 

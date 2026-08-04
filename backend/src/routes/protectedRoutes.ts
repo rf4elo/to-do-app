@@ -8,7 +8,7 @@ import { decodeJwt } from "jose";
 
 const ProtectedRoutes: Router = Router();
 
-ProtectedRoutes.get("/", ValidateProtectedRoutes, async (req: Request, res: Response) => {
+ProtectedRoutes.get("/tasks", ValidateProtectedRoutes, async (req: Request, res: Response) => {
     const token = req.cookies.authToken;
     const decodedToken = await decodeJwt(token);
 
@@ -17,7 +17,7 @@ ProtectedRoutes.get("/", ValidateProtectedRoutes, async (req: Request, res: Resp
     return res.status(200).json({ "message": "Hello, world!", "tasks":tasks });
 });
 
-ProtectedRoutes.post("/", ValidateProtectedRoutes, async (req: Request, res: Response) => {
+ProtectedRoutes.post("/tasks", ValidateProtectedRoutes, async (req: Request, res: Response) => {
     const { title } = req.body;
     const token = await req.cookies.authToken;
 
