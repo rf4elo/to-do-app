@@ -25,7 +25,7 @@ export async function LoginUser(req: Request, res: Response): Promise<Response> 
         const token = await userService.Login(email, password);
         res.cookie("authToken", token, {
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV == "production",
             sameSite: "lax",
             maxAge: 2 * 60 * 60 * 1000, // 2 hours,
             path: "/"
