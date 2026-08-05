@@ -3,7 +3,10 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: "http://localhost:3000",
-    withCredentials: true
+    withCredentials: true,
+    headers: {
+        'x-api-key': import.meta.env.VITE_API_KEY
+    }
 });
 
 

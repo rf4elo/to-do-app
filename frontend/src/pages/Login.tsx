@@ -4,7 +4,7 @@ import '../styles/LoginRegister.css';
 import api from "../services/axios";
 
 
-const API_SECRET = import.meta.env.VITE_API_KEY;
+// const API_SECRET = import.meta.env.VITE_API_KEY;
 
 
 export default function Login() {
@@ -20,8 +20,7 @@ export default function Login() {
             "password":password            
         }, {
             headers: {
-                'Content-Type': 'application/json',
-                'x-api-key': API_SECRET
+                'Content-Type': 'application/json'
             }
         });
 

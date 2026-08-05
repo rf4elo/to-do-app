@@ -10,7 +10,6 @@ export async function GetTasks(userId: number) {
     if(!userId) throw new Error("UserId is missing.");
 
     const userTasks = await prisma.task.findMany({ where: { "userId": userId } });
-
     
     return userTasks;
     
@@ -51,3 +50,24 @@ export async function CreateTask(token:string, title:string) {
 
 }
 
+export async function DeleteTask(token: string, taskId:number) {
+
+    if(!token || !taskId) throw new Error("UserId or taskId is missing.");
+
+    const decodedToken = decodeJwt(token);
+    const userExists = await userService.GetUser(decodedToken.email as string);
+
+    if(!userExists) throw new Error("User not found");
+
+    const taskExists = (await GetTasks(userExists.id)).filter((i:any) => i.id == taskId);
+    if(!taskExists) throw new Error("Task not found.");
+
+    await prisma.task.delete({
+        where: {
+            id: taskId
+        }
+    });
+
+    return {};
+    
+};

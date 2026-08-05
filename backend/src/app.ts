@@ -15,13 +15,20 @@ App.use(express.urlencoded({ extended: true }));
 App.use(express.json());
 
 
-App.use(cookieParser());
+const allowedOrigins = ['http://localhost:5173'];
 App.use(cors({
-    origin: "http://localhost:5173",
+    origin: function(origin, callback) {
+        if(!origin || allowedOrigins.indexOf(origin) != -1) {
+            callback(null, true);
+        } else {
+            callback(new Error('Blocked by CORS'));
+        }
+    },
     credentials: true,
     methods: ['GET'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
 }));
+App.use(cookieParser());
 
 // App.options("*", cors());
 

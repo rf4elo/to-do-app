@@ -27,6 +27,12 @@
 
         min-height: 100px;
 
+
+        & > p {
+            color: var(--primary-color);
+            text-align: center;
+        };
+
         & .item {
             background-color: var(--primary-color);
             border-bottom: 2px solid var(--assent-color);

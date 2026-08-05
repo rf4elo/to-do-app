@@ -33,5 +33,17 @@ ProtectedRoutes.post("/tasks", ValidateProtectedRoutes, async (req: Request, res
 
 });
 
+ProtectedRoutes.delete("/tasks/:id", ValidateProtectedRoutes, async (req: Request, res: Response) => {
+    try {
+        const token = await req.cookies.authToken;
+        const { id } = await req.params;
+        const response = await taskService.DeleteTask(token, +id);
+        return res.status(204).json(response);
+    } catch (error: any) {
+        if(error.message == "UserId or taskId is missing.") return res.status(429).json({ "error":error.message });
+        return res.status(404).json({ "error":error.message });
+    }
+});
+
 
 export default ProtectedRoutes;
