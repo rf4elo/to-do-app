@@ -37,6 +37,7 @@ ProtectedRoutes.delete("/tasks/:id", ValidateProtectedRoutes, async (req: Reques
     try {
         const token = await req.cookies.authToken;
         const { id } = await req.params;
+        if(!id) throw new Error("TaskId is missing.");
         const response = await taskService.DeleteTask(token, +id);
         return res.status(204).json(response);
     } catch (error: any) {

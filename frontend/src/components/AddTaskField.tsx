@@ -1,11 +1,16 @@
 import '../styles/AddTaskField.css';
 import api from '../services/axios';
+
 import { useState } from 'react';
+import { useRevalidator } from 'react-router-dom';
 
 
 export function AddTaskField() {
-
+    
     const [title, setTitle] = useState("");
+    
+    const revalidator = useRevalidator();
+
 
     async function CreateTask() {
         try {
@@ -13,7 +18,8 @@ export function AddTaskField() {
             "title":title
         };
         const response = await api.post("/api/tasks", formData);
-        console.log(response);
+        revalidator.revalidate();
+        alert(`${response.status} - ${response.statusText}${response.data?.message ? ` | ${response.data.message}` : ''}`);
         } catch (error) {
             console.error(error);
         }

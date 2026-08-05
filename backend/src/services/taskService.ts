@@ -52,7 +52,7 @@ export async function CreateTask(token:string, title:string) {
 
 export async function DeleteTask(token: string, taskId:number) {
 
-    if(!token || !taskId) throw new Error("UserId or taskId is missing.");
+    if(!token) throw new Error("UserId is missing.");
 
     const decodedToken = decodeJwt(token);
     const userExists = await userService.GetUser(decodedToken.email as string);
