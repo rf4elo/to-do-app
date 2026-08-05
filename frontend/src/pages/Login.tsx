@@ -15,19 +15,24 @@ export default function Login() {
 
     async function Login() {
 
-        const response = await api.post('/api/login', {
-            "email":email,
-            "password":password            
-        }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        if(!email || !password) return alert("All fields must be filled.");
 
-        if(response.status == 201) {
-            return window.location.href = "/";
+        try {
+            const response = await api.post('/api/login', {
+                "email":email,
+                "password":password            
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if(response.status == 201) {
+                return window.location.href = "/";
+            }
+        } catch(error) {
+            return alert(error);
         }
-        
     }
 
 

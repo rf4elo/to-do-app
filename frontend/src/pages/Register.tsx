@@ -17,25 +17,30 @@ export default function Register() {
     async function Register() {
 
         if(!name || !email || !password || !confirm) return alert("All fields must be filled.");
+        
+        try {
+            if(password == confirm) {
+                const response = await api.post("/api/register", {
+                    "name": name,
+                    "email": email,
+                    "password": password
+                }, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-        if(password == confirm) {
-            const response = await api.post("/api/register", {
-                "name": name,
-                "email": email,
-                "password": password
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
+                if(response.status == 201) {
+                    window.location.href = "/login";
+                } else {
+                    alert(`${response.status} - ${response.statusText}`);
                 }
-            });
-
-            if(response.status == 201) {
-                window.location.href = "/login";
+            } else {
+                alert("The passwords must match.");
             }
-        } else {
-            alert("The passwords must match.");
+        } catch (error) {
+            return alert(error);
         }
-
     }
 
     return(
