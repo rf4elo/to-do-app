@@ -90,5 +90,4 @@ pnpm start:frontend
 - [MIT License](./LICENSE)
 
 ## Professional contact
-- [Linkedin](https://linkedin.com/in/rafael-j-rocha)
 - [Github](https://github.com/rf4elo)
