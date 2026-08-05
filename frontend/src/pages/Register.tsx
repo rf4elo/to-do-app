@@ -1,9 +1,10 @@
-import { useState } from "react"
 import '../styles/LoginRegister.css';
+import { useState } from "react"
 
+import api from '../services/axios';
 
+import { Footer } from "../components/Footer";
 
-const API_SECRET = import.meta.env.VITE_API_KEY;
 
 
 export default function Register() {
@@ -15,17 +16,20 @@ export default function Register() {
 
     async function Register() {
 
+        if(!name || !email || !password || !confirm) return alert("All fields must be filled.");
+
         if(password == confirm) {
-            const response = await fetch("http://localhost:3000/api/register", {
-                method: "POST",
+            const response = await api.post("/api/register", {
+                "name": name,
+                "email": email,
+                "password": password
+            }, {
                 headers: {
-                    'Content-Type': 'application/json',
-                    'x-api-key': API_SECRET
-                },
-                body: JSON.stringify({ "email":email, "name":name, "password":password })
+                    'Content-Type': 'application/json'
+                }
             });
-    
-            if(response.ok) {
+
+            if(response.status == 201) {
                 window.location.href = "/login";
             }
         } else {
@@ -65,11 +69,13 @@ export default function Register() {
                     value={confirm} onChange={(e) => setConfirm(e.target.value)}
                 />
 
-                <input type="submit" onClick={Register} value="Login" />
+                <input type="submit" onClick={Register} value="Register" />
 
                 <p>Just have an account ? <a href="/login" >Login</a>!</p>
 
             </div>
+
+            <Footer />
 
         </div>
     )

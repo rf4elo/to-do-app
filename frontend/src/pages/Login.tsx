@@ -1,10 +1,10 @@
-import { useState } from "react"
 import '../styles/LoginRegister.css';
+import { useState } from "react"
 
 import api from "../services/axios";
 
+import { Footer } from "../components/Footer";
 
-// const API_SECRET = import.meta.env.VITE_API_KEY;
 
 
 export default function Login() {
@@ -55,6 +55,8 @@ export default function Login() {
                 <p>Don't have an account ? <a href="/register" >Register</a>!</p>
 
             </div>
+
+            <Footer />
 
         </div>
     )
