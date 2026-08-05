@@ -4,7 +4,7 @@
 
 ## App structure
 - `backend/` - The project backend, make with Express and TypeScript.
-- `frontend/` - The project frontend, make with Vite React.
+- `frontend/` - The project frontend, React application based on Vite.
 
 ## How to run
 
