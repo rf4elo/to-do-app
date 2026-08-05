@@ -23,14 +23,16 @@ On the `backend/` folder, create a ".env" file and set these variables:
 API_KEY=(my-api-key-very-long)
 JWT_KEY=(my-jwt-key-very-long)
 
-DATABASE_URL="(my-database-url)"
+DATABASE_URL="(my-postgresql-database-url)"
 ```
 
-On the `frontend/` folder, create a ".env" file and set these variables:
+On the `frontend/` folder, create a ".env" file and set this variable:
 ```env
 VITE_API_KEY=(my-api-key-very-long)
 ```
-Obs: The `API_KEY` on the backend ".env" and the `VITE_API_KEY` on the frontend ".env" must be the same.
+#### Obs:
+1. The `API_KEY` on the backend ".env" and the `VITE_API_KEY` on the frontend ".env" must be the same.
+2. The database must to be a PostgreSQL.
 
 ### Install dependences
 On the main project folder, run it:
@@ -42,6 +44,14 @@ cd backend && pnpm install
 
 # Install the frontend dependences
 cd .. && cd frontend && pnpm install
+```
+
+### Generate prisma client
+To genereate the prisma client, run:
+```bash
+pnpm dlx prisma generate
+
+# If necessary, select the "Prisma Engine" option and press Enter.
 ```
 
 ### Run in dev mode
