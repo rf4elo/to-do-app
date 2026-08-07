@@ -52,7 +52,13 @@
             padding: 8px 30px;
 
             & > span {
-                display: block;
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+
+                & > input[type="checkbox"] {
+                    accent-color: var(--assent-color);
+                }
             };
             & > button {
                 display: block;

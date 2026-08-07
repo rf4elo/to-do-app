@@ -18,7 +18,7 @@ interface Task {
     id: number,
     userId: number,
     title: string,
-    isCompleted: boolean
+    isComplete: boolean
 }
 
 export function ListTasks() {
@@ -37,6 +37,16 @@ export function ListTasks() {
         }
     }
 
+    async function SetCompleteTask(taskId:any) {
+        try {
+            const response = await api.put(`/api/tasks/${taskId}`);
+            revalidator.revalidate();
+            alert(`${response.status} - ${response.statusText}${response.data?.message ? ` | ${response.data.message}` : ''}`);
+        } catch (error) {
+            return console.error("Error: ", error);
+        }
+    }
+
     const tasks = useLoaderData() as Task[];
     
     return (
@@ -48,7 +58,7 @@ export function ListTasks() {
                     tasks == null ? '<p>No one task</p>' :
                     tasks.map((item: Task) => (
                         <div key={item.id} className="item">
-                            <span>{item.title}</span>
+                            <span><input type="checkbox" onChange={() => SetCompleteTask(item.id)} checked={item.isComplete} /> {item.title}</span>
                             <button onClick={() => DeleteTask(item.id)} >Delete</button>
                         </div>
                     ))
