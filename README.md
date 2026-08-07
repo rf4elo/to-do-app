@@ -54,6 +54,13 @@ pnpm dlx prisma generate
 # If necessary, select the "Prisma Engine" option and press Enter.
 ```
 
+### Generate a migrate
+To generate a prisma migrate, run:
+```bash
+pnpm prisma migrate dev --name (migrate-name)
+# Migrate name example: creating-tables
+```
+
 ### Run in dev mode
 
 #### Run all stacks simultaneously
