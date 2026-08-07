@@ -60,6 +60,7 @@
 
                 & > input[type="checkbox"] {
                     accent-color: var(--assent-color);
+                    cursor: pointer;
                 }
             };
             & > button {
