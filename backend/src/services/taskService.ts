@@ -71,3 +71,27 @@ export async function DeleteTask(token: string, taskId:number) {
     return {};
     
 };
+
+export async function ChangeCompleteTask(token: string, taskId:number) {
+    
+    if(!token) throw new Error("Token is missing.");
+
+    const decodedToken = await decodeJwt(token);
+    const user = await userService.GetUser(`${decodedToken.email}`);
+
+    const TaskExists = (await GetTasks(user.id)).filter((i:any) => i.id == taskId);
+    if(!TaskExists) throw new Error("Task not found.");
+
+    const isCompleted = await prisma.task.findUnique({ where: { id: taskId }, select: { isComplete: true } });
+
+    console.log(isCompleted);
+
+    await prisma.task.update({
+        where: {
+            id: taskId
+        },
+        data: {
+            isComplete: isCompleted?.isComplete ? false : true
+        }
+    });
+};

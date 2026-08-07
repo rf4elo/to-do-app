@@ -25,7 +25,7 @@ App.use(cors({
         }
     },
     credentials: true,
-    methods: ['GET', 'POST', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'x-api-key']
 }));
 App.use(cookieParser());

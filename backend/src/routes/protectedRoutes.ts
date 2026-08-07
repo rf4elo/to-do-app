@@ -46,5 +46,18 @@ ProtectedRoutes.delete("/tasks/:id", ValidateProtectedRoutes, async (req: Reques
     }
 });
 
+ProtectedRoutes.put("/tasks/:id", ValidateProtectedRoutes, async (req: Request, res: Response) => {
+    try {
+        const token = await req.cookies.authToken;
+        const { id } = await req.params;
+        if(!id) throw new Error("TaskId is missing.");
+        const response = await taskService.ChangeCompleteTask(token, +id);
+        return res.status(201).json({ "message":"Updated successfully", "response":response });
+    } catch(error: any) {
+        if(error.message == "TaskId is missing.") return res.status(404).json({ "error": error });
+        return res.status(400).json({ "error":error });
+    }
+});
+
 
 export default ProtectedRoutes;
