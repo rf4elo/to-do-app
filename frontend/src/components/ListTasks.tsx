@@ -39,7 +39,7 @@ export function ListTasks() {
 
     async function SetCompleteTask(taskId:any) {
         try {
-            const response = await api.put(`/api/tasks/${taskId}`);
+            await api.put(`/api/tasks/${taskId}`);
             revalidator.revalidate();
         } catch (error) {
             return console.error("Error: ", error);
