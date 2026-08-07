@@ -41,7 +41,6 @@ export function ListTasks() {
         try {
             const response = await api.put(`/api/tasks/${taskId}`);
             revalidator.revalidate();
-            alert(`${response.status} - ${response.statusText}${response.data?.message ? ` | ${response.data.message}` : ''}`);
         } catch (error) {
             return console.error("Error: ", error);
         }
