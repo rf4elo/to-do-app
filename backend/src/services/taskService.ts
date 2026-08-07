@@ -84,8 +84,6 @@ export async function ChangeCompleteTask(token: string, taskId:number) {
 
     const isCompleted = await prisma.task.findUnique({ where: { id: taskId }, select: { isComplete: true } });
 
-    console.log(isCompleted);
-
     await prisma.task.update({
         where: {
             id: taskId

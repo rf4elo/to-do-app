@@ -57,7 +57,7 @@ export function ListTasks() {
                 {
                     tasks == null ? '<p>No one task</p>' :
                     tasks.map((item: Task) => (
-                        <div key={item.id} className="item">
+                        <div key={item.id} className={`item ${item.isComplete ? 'checked' : ''}`} >
                             <span><input type="checkbox" onChange={() => SetCompleteTask(item.id)} checked={item.isComplete} /> {item.title}</span>
                             <button onClick={() => DeleteTask(item.id)} >Delete</button>
                         </div>

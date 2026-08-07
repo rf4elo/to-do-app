@@ -51,6 +51,8 @@
 
             padding: 8px 30px;
 
+            transition: all 0.2s ease-in-out;
+
             & > span {
                 display: flex;
                 justify-content: center;
@@ -81,6 +83,12 @@
                 &:active {
                     filter: brightness(0.7);
                 };
+            };
+        };
+        & .checked {
+            filter: brightness(0.8);
+            & > span {
+                text-decoration: line-through;
             };
         };
     };
